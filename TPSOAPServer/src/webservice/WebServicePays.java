@@ -9,13 +9,14 @@ import metier.Pays;
 
 public class WebServicePays
 {
-	public String getListePays(){
+	public String getListePays()
+	{
 		try
 		{
-			String response="";
-			for(Pays pays:ServicePays.recherchePays())
+			String response = "";
+			for (Pays pays : ServicePays.recherchePays())
 			{
-				response+=pays.getNom()+"\n";
+				response += "<country>"+pays.getNom() + "</country>\n";
 			}
 			return response;
 		} catch (MonException e)
@@ -25,13 +26,16 @@ public class WebServicePays
 		}
 		return "Impossible d'afficher les pays";
 	}
-	public String donneInfoPays(String pays){
+
+	public String donneInfoPays(String pays)
+	{
 		try
 		{
-			String response="Pour le pays "+pays;
-			Pays unPays=ServicePays.recherchePays(pays);
-			response+="\n Capital:"+unPays.getCapital();
-			response+="\n Nombre d'habitants:"+unPays.getNbHabitants();
+			String response = "<country>\n<name>" + pays+"</name>\n";
+			Pays unPays = ServicePays.recherchePays(pays);
+			response += "<capital>" + unPays.getCapital()+"</capital>\n";
+			response += "<nbinhab>" + unPays.getNbHabitants()+"</nbinhab>\n";
+			response +="</country>";
 			return response;
 		} catch (MonException e)
 		{
