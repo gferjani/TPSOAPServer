@@ -13,35 +13,34 @@ public class WebServicePays
 	{
 		try
 		{
-			String response = "";
+			String response = "<countries>";
 			for (Pays pays : ServicePays.recherchePays())
 			{
-				response += "<country>"+pays.getNom() + "</country>\n";
+				response += "<country>" + pays.getNom() + "</country>";
 			}
+			response += "</countries>";
 			return response;
 		} catch (MonException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "Impossible d'afficher les pays";
+		return "<error>Impossible d'afficher les pays</error>";
 	}
 
 	public String donneInfoPays(String pays)
 	{
 		try
 		{
-			String response = "<country>\n<name>" + pays+"</name>\n";
+			String response = "<country><name>" + pays + "</name>";
 			Pays unPays = ServicePays.recherchePays(pays);
-			response += "<capital>" + unPays.getCapital()+"</capital>\n";
-			response += "<nbinhab>" + unPays.getNbHabitants()+"</nbinhab>\n";
-			response +="</country>";
+			response += "<capital>" + unPays.getCapital() + "</capital>";
+			response += "<nbinhab>" + unPays.getNbHabitants() + "</nbinhab>";
+			response += "</country>";
 			return response;
 		} catch (MonException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "Impossible d'afficher les données de ce pays";
+		return "<error>Impossible d'afficher les données de ce pays</error>";
 	}
 }
