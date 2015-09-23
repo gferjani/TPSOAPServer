@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice" xmlns:intf="http://webservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getListePays">
+    <complexType/>
+   </element>
+   <element name="getListePaysResponse">
+    <complexType>
+     <sequence>
+      <element name="getListePaysReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="donneInfoPays">
+    <complexType>
+     <sequence>
+      <element name="pays" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="donneInfoPaysResponse">
+    <complexType>
+     <sequence>
+      <element name="donneInfoPaysReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="donneInfoPaysResponse">
+
+      <wsdl:part element="impl:donneInfoPaysResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="donneInfoPaysRequest">
+
+      <wsdl:part element="impl:donneInfoPays" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListePaysResponse">
+
+      <wsdl:part element="impl:getListePaysResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListePaysRequest">
+
+      <wsdl:part element="impl:getListePays" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WebServicePays">
+
+      <wsdl:operation name="getListePays">
+
+         <wsdl:input message="impl:getListePaysRequest" name="getListePaysRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListePaysResponse" name="getListePaysResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="donneInfoPays">
+
+         <wsdl:input message="impl:donneInfoPaysRequest" name="donneInfoPaysRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:donneInfoPaysResponse" name="donneInfoPaysResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WebServicePaysSoapBinding" type="impl:WebServicePays">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getListePays">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListePaysRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListePaysResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="donneInfoPays">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="donneInfoPaysRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="donneInfoPaysResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WebServicePaysService">
+
+      <wsdl:port binding="impl:WebServicePaysSoapBinding" name="WebServicePays">
+
+         <wsdlsoap:address location="http://localhost:8081/TPSOAPServer/services/WebServicePays"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
